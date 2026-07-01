@@ -16,5 +16,12 @@ scripts/config --undefine DEBUG_INFO_COMPRESSED
 scripts/config --set-val  DEBUG_INFO_NONE       y
 scripts/config --set-val  DEBUG_INFO_DWARF5     n
 
+scripts/config --enable  DRM
+scripts/config --module  DRM_XE
+scripts/config --enable  DRM_XE_DISPLAY
+scripts/config --module  NTSYNC
+scripts/config --module  INPUT_UINPUT
+scripts/config --module  FUSE_FS
+
 yes '' | make oldconfig && make clean && make -j `getconf _NPROCESSORS_ONLN` deb-pkg LOCALVERSION=-`git describe --tags --always | sed 's#/#_#g' | sed 's#_#-#g' | tr '[:upper:]' '[:lower:]'`
 
