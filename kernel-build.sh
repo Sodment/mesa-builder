@@ -1,7 +1,10 @@
 #!/bin/sh
 
-git clean -fxd 
-cp /boot/config-`uname -r` ./.config 
+git clean -fxd
+cp /boot/config-`uname -r` ./.config
+
+yes '' | make localmodconfig
+
 # remove trusted keys
 scripts/config --disable SYSTEM_REVOCATION_KEYS
 scripts/config --disable SYSTEM_TRUSTED_KEYS
